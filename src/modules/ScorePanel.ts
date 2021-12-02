@@ -1,40 +1,45 @@
-// 定义表示记分牌的类
-class ScorePanel{
-    // score和level用来记录分数和等级
-    score:number = 0
-    level:number = 1
-    // 分数和等级所在的元素，在构造函数中进行初始化
-    scoreEle:HTMLElement
-    levelEle:HTMLElement
+// 记录分数和等级
+// 实现加分功能
+// 实现升级功能
 
-    //设置一个变量限制等级
-    maxLevel:number
-    //设置一个变量表示多少分升级
-    upScroe:number
-    
-    constructor(maxLevel:number = 10, upScroe:number = 10){
-        this.scoreEle = document.getElementById('score')!
-        this.levelEle = document.getElementById('level')!
-        //最大的等级是10 满10分升一级
-        this.maxLevel = maxLevel
-        this.upScroe = upScroe
+// 定义表示记分牌的类
+class ScorePanel {
+    // score和level用来记录分数和等级
+    score = 0;
+    level = 1;
+
+    // 分数和等级所在的元素，在构造函数中进行初始化
+    scoreEle: HTMLElement;
+    levelEle: HTMLElement;
+
+    // 设置一个变量限制等级
+    maxLevel: number;
+    // 设置一个变量表示多少分时升级
+    upScore: number;
+
+    constructor(maxLevel: number = 10, upScore: number = 10) {
+        this.scoreEle = document.getElementById('score')!;
+        this.levelEle = document.getElementById('level')!;
+        this.maxLevel = maxLevel;
+        this.upScore = upScore;
     }
-     //增加分数的方法
-     addScore(){
+
+    //设置一个加分的方法
+    addScore() {
         // 使分数自增
-        // this.score++;
-        // this.scoreEle.innerHTML = this.score + '';
-        this.scoreEle.innerHTML = ++this.score + "" 
-        //满10分 升一级
-        if(this.score % this.upScroe){
-            this.levelUp()
+        this.scoreEle.innerHTML = ++this.score + '';
+        // 判断分数是多少
+        if (this.score % this.upScore === 0) {
+            this.levelUp();
         }
     }
-    //升级方法
-    levelUp(){
-        if(this.level<this.maxLevel){
-            this.levelEle.innerHTML = ++this.level +''
+
+    // 提升等级的方法
+    levelUp() {
+        if (this.level < this.maxLevel) {
+            this.levelEle.innerHTML = ++this.level + '';
         }
     }
 }
-export default ScorePanel
+
+export default ScorePanel;
