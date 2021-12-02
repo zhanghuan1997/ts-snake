@@ -29,20 +29,20 @@ class Food{
         // 食物不能出现在蛇的位置
         let foodInSnake: boolean = false;
         for (let i = 0; i < snakeBody.length; i++) {
-        let body = <HTMLElement>snakeBody[i];
-        if (left === body.offsetLeft && top === body.offsetTop) {
-            foodInSnake = true
-        }
+            let body = <HTMLElement>snakeBody[i];
+            if (left === body.offsetLeft && top === body.offsetTop) {
+                foodInSnake = true
+            }
         }
         if (foodInSnake) {
-        this.change(snakeBody);
+            this.change(snakeBody);
         } else {
-        this.element.style.left = left + 'px';
-        this.element.style.top = top + 'px';
+            this.element.style.left = left + 'px';
+            this.element.style.top = top + 'px';
         }
 
-        this.element.style.top = top + 'px'
-        this.element.style.left = left + 'px'
+        // this.element.style.top = top + 'px'
+        // this.element.style.left = left + 'px'
     }
 }
 
